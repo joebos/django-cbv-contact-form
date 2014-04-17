@@ -15,7 +15,7 @@ Quick start
         'contactform',
     )
 
-2. Include the polls URLconf in your project urls.py like this::
+2. Include the contact form URLconf in your project urls.py like this::
 
     url(r'^contactform/', include('contactform.urls')),
 
