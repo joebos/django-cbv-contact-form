@@ -25,7 +25,7 @@ You can install the latest stable package running this command::
 
 Also you can install the development version running this command::
 
-    $ pip install -e git+http://github.com/dlancer/django-cbv-contact-form.git#egg=contactform-development
+    $ pip install -e git+http://github.com/dlancer/django-cbv-contact-form.git#egg=contactform-dev
 
 Setuptools
 ----------
