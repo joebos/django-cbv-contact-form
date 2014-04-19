@@ -8,7 +8,7 @@ def get_version():
 __author__ = 'dlancer'
 __docformat__ = 'restructuredtext en'
 __copyright__ = 'Copyright 2014, dlancer'
-__license__ = 'MIT License'
+__license__ = 'MIT'
 __version__ = get_version()
 __maintainer__ = 'dlancer'
 __email__ = 'dmdpost@gmail.com'
