@@ -2,7 +2,7 @@ import os
 from setuptools import setup, find_packages
 from contactform import get_version as get_package_version
 
-README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
+README = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
@@ -15,14 +15,18 @@ setup(
     install_requires=[
         'docutils>=0.3',
         'Django>=1.5',
-        'django-simple-captcha>=0.4.2'
+        'django-simple-captcha>=0.4.2',
+        'django-braces>=1.4.0',
+        'django-crispy-forms>=1.4.0'
     ],
-    license='MIT License',
+    license='MIT',
     description='Class based view contact form with captcha support for Django 1.5+',
     long_description=README,
-    url='',
+    url='https://github.com/dlancer/django-cbv-contact-form',
     author='dlancer',
     author_email='dmdpost@gmail.com',
+    maintainer='dlancer',
+    maintainer_email='dmdpost@gmail.com',
     zip_safe=False,
     classifiers=[
         'Environment :: Web Environment',
