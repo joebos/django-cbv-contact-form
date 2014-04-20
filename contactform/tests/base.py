@@ -1,7 +1,5 @@
-from django.conf import settings as django_settings
+
 from django.contrib.auth.models import User
-from django.core.exceptions import ImproperlyConfigured
-from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client, RequestFactory
 

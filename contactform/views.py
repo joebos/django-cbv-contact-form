@@ -2,13 +2,16 @@
 
 import django.dispatch
 
-contact_form_message = django.dispatch.Signal(
+contact_form_valid = django.dispatch.Signal(
     providing_args=['event', 'sender_ip', 'sender_name', 'sender_email', 'email', 'subject', 'message']
+)
+
+contact_form_invalid = django.dispatch.Signal(
+    providing_args=['event', 'sender_ip', 'sender_name', 'sender_email']
 )
 
 from django.views.generic import CreateView
 from django.core.urlresolvers import reverse_lazy
-from django.utils.translation import ugettext_lazy as _
 
 from braces.views import FormMessagesMixin
 
@@ -21,11 +24,12 @@ class ContactFormView(FormMessagesMixin, CreateView):
 
     template_name = 'contactform/form.html'
     success_url = reverse_lazy('contactform')
-    # TODO: replace to configurable strings
-    form_valid_message = _(u'Your message is submitted.')
-    form_invalid_message = _(u'Something went wrong, your message was not submitted!')
 
-    success_event = 'CONTACT_FORM_NEW_MESSAGE'
+    form_valid_message = settings.CONTACT_FORM_VALID_MESSAGE
+    form_invalid_message = settings.CONTACT_FORM_INVALID_MESSAGE
+
+    valid_event = 'CONTACT_FORM_VALID_MESSAGE'
+    invalid_event = 'CONTACT_FORM_INVALID_MESSAGE'
 
     def get_form_class(self):
         if hasattr(self.request, 'user'):
@@ -59,7 +63,7 @@ class ContactFormView(FormMessagesMixin, CreateView):
         instance.ip = self.request.META['REMOTE_ADDR']
         instance.save()
         if settings.CONTACT_FORM_USE_SIGNALS:
-            contact_form_message.send(
+            contact_form_valid.send(
                 sender=self,
                 event=self.success_event,
                 ip=instance.ip,
@@ -71,3 +75,17 @@ class ContactFormView(FormMessagesMixin, CreateView):
             )
 
         return super(ContactFormView, self).form_valid(form)
+
+    def form_invalid(self, form):
+        """This is what's called when the form is invalid."""
+        ip = self.request.META['REMOTE_ADDR']
+        if settings.CONTACT_FORM_USE_SIGNALS:
+            contact_form_invalid.send(
+                sender=self,
+                event=self.success_event,
+                ip=ip,
+                sender_name=form['sender_name'],
+                sender_email=form['sender_email']
+            )
+
+        return super(ContactFormView, self).form_invalid(form)
