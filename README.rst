@@ -6,6 +6,8 @@ Django class based contact form
 Requirements
 ------------
 
+::
+
     django >= 1.5
     django-simple-captcha >= 0.4.2
     django-braces >= 1.4.0
