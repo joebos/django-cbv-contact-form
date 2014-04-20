@@ -23,6 +23,7 @@ setup(
     description='Class based view contact form with captcha support for Django 1.5+',
     long_description=README,
     url='https://github.com/dlancer/django-cbv-contact-form',
+    bugtrack_url='https://github.com/dlancer/django-cbv-contact-form/issues',
     author='dlancer',
     author_email='dmdpost@gmail.com',
     maintainer='dlancer',
