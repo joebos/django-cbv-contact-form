@@ -67,29 +67,35 @@ These options should be defined in your ``settings.py`` file.
 
 **Contact form logic customization**
 
-- ``CONTACT_FORM_USE_CAPTCHA``: force use captcha for anonymous users
+* ``CONTACT_FORM_USE_CAPTCHA``: force use captcha for anonymous users
 
-- ``CONTACT_FORM_USE_SIGNALS``: send signal after success form submitting
+* ``CONTACT_FORM_USE_SIGNALS``: send signals after form submitting
+
+**Contact form submission message customization**
+
+* ``CONTACT_FORM_VALID_MESSAGE``: success message for valid form submission
+
+* ``CONTACT_FORM_INVALID_MESSAGE``: error message for invalid form submission
 
 **User model related customization**
 
-- ``CONTACT_FORM_USE_USERNAME``: fill username form field for authenticated user
+* ``CONTACT_FORM_USE_USERNAME``: fill username form field for authenticated user
 
-- ``CONTACT_FORM_USERNAME_FIELD``: username field name in User model
+* ``CONTACT_FORM_USERNAME_FIELD``: username field name in User model
 
-- ``CONTACT_FORM_USE_USER_EMAIL``: fill email form field for authenticated user
+* ``CONTACT_FORM_USE_USER_EMAIL``: fill email form field for authenticated user
 
-- ``CONTACT_FORM_USER_EMAIL_FIELD``: email field name in User model
+* ``CONTACT_FORM_USER_EMAIL_FIELD``: email field name in User model
 
 **Contact form models fields customization**
 
-- ``CONTACT_FORM_MAX_SENDER_NAME_LENGTH``: sender name max length
+* ``CONTACT_FORM_MAX_SENDER_NAME_LENGTH``: sender name max length
 
-- ``CONTACT_FORM_MAX_SUBJECT_LENGTH``: message subject max length
-- ``CONTACT_FORM_MAX_MESSAGE_LENGTH``: message text max length
+* ``CONTACT_FORM_MAX_SUBJECT_LENGTH``: message subject max length
+* ``CONTACT_FORM_MAX_MESSAGE_LENGTH``: message text max length
 
-- ``CONTACT_FORM_MAX_DEPARTMENT_NAME_LENGTH``: department name max length
-- ``CONTACT_FORM_MAX_DEPARTMENT_PHONE_LENGTH``: department phone max length
+* ``CONTACT_FORM_MAX_DEPARTMENT_NAME_LENGTH``: department name max length
+* ``CONTACT_FORM_MAX_DEPARTMENT_PHONE_LENGTH``: department phone max length
 
 Usage
 =====
@@ -100,4 +106,4 @@ form settings (you'll need the Admin app enabled).
 Visit http://127.0.0.1:8000/contactform/ to use contact form.
 
 
-Detailed documentation is in the "docs" directory.
+You may find detailed documentation is in the "docs" directory.
