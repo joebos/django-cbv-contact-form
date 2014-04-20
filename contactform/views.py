@@ -49,9 +49,9 @@ class ContactFormView(FormMessagesMixin, CreateView):
             user = self.request.user
             if settings.CONTACT_FORM_USE_USERNAME and user.is_authenticated():
                 if hasattr(user, settings.CONTACT_FORM_USERNAME_FIELD):
-                    sender_name = user[settings.CONTACT_FORM_USERNAME_FIELD]
+                    sender_name = getattr(user, settings.CONTACT_FORM_USERNAME_FIELD)
                 if hasattr(user, settings.CONTACT_FORM_USER_EMAIL_FIELD):
-                    sender_email = user[settings.CONTACT_FORM_USER_EMAIL_FIELD]
+                    sender_email = getattr(user, settings.CONTACT_FORM_USER_EMAIL_FIELD)
         initial = {'sender_name': sender_name, 'sender_email': sender_email}
         return initial
 
@@ -65,7 +65,7 @@ class ContactFormView(FormMessagesMixin, CreateView):
         if settings.CONTACT_FORM_USE_SIGNALS:
             contact_form_valid.send(
                 sender=self,
-                event=self.success_event,
+                event=self.valid_event,
                 ip=instance.ip,
                 sender_name=instance.sender_name,
                 sender_email=instance.sender_email,
@@ -82,7 +82,7 @@ class ContactFormView(FormMessagesMixin, CreateView):
         if settings.CONTACT_FORM_USE_SIGNALS:
             contact_form_invalid.send(
                 sender=self,
-                event=self.success_event,
+                event=self.invalid_event,
                 ip=ip,
                 sender_name=form['sender_name'],
                 sender_email=form['sender_email']
