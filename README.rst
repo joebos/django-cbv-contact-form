@@ -73,6 +73,8 @@ These options should be defined in your ``settings.py`` file.
 
 * ``CONTACT_FORM_USE_SIGNALS``: send signals after form submitting
 
+* ``CONTACT_FORM_SUCCESS_URL``: url for redirection after successful form submission
+
 **Contact form submission message customization**
 
 * ``CONTACT_FORM_VALID_MESSAGE``: success message for valid form submission

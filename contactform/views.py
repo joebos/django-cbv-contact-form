@@ -11,7 +11,6 @@ contact_form_invalid = django.dispatch.Signal(
 )
 
 from django.views.generic import CreateView
-from django.core.urlresolvers import reverse_lazy
 
 from braces.views import FormMessagesMixin
 
@@ -23,7 +22,7 @@ class ContactFormView(FormMessagesMixin, CreateView):
     """Contact form view"""
 
     template_name = 'contactform/form.html'
-    success_url = reverse_lazy('contactform')
+    success_url = settings.CONTACT_FORM_SUCCESS_URL
 
     form_valid_message = settings.CONTACT_FORM_VALID_MESSAGE
     form_invalid_message = settings.CONTACT_FORM_INVALID_MESSAGE
