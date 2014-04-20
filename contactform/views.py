@@ -1,4 +1,4 @@
-"""Implements contact form views"""
+"""Implements contact form view"""
 
 import django.dispatch
 

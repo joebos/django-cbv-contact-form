@@ -14,6 +14,7 @@ try:
 except ImportError:
     raise 'django-cbv-contact-form application required django-crispy-forms package'
 
+from contactform.conf import settings
 from contactform.models import Message, Subject
 
 
@@ -26,13 +27,14 @@ class ContactForm(forms.ModelForm):
                                      empty_label=_('Please select subject'),
                                      error_messages={'required': _('Please select subject')})
     sender_name = forms.CharField(label=_('Your name'),
-                                  widget=forms.TextInput(attrs={'maxlength': 50}),
+                                  widget=forms.TextInput(attrs={'maxlength': settings.CONTACT_FORM_MAX_SENDER_NAME_LENGTH}),
                                   error_messages={'required': _('Please enter your name')})
+    # maxlength is 254 characters for compliant with RFCs 3696 and 5321
     sender_email = forms.EmailField(label=_('Your e-mail'),
-                                    widget=forms.TextInput(attrs={'maxlength': 50}),
+                                    widget=forms.TextInput(attrs={'maxlength': 254}),
                                     error_messages={'required': _('Please enter your email.')})
     message = forms.CharField(label=_('Your message'),
-                              widget=forms.Textarea(attrs={'maxlength': 3000}),
+                              widget=forms.Textarea(attrs={'maxlength': settings.CONTACT_FORM_MAX_MESSAGE_LENGTH}),
                               min_length=15,
                               help_text=_('Your message (15 characters minimum)'),
                               error_messages={'required': _('Please enter your message'),

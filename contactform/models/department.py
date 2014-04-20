@@ -8,7 +8,8 @@ from contactform.conf import settings
 
 class Department(models.Model):
     name = models.CharField(max_length=settings.CONTACT_FORM_MAX_DEPARTMENT_NAME_LENGTH)
-    email = models.EmailField()
+    # max_length overridden to 254 characters for compliant with RFCs 3696 and 5321
+    email = models.EmailField(max_length=254)
     phone = models.CharField(max_length=settings.CONTACT_FORM_MAX_DEPARTMENT_PHONE_LENGTH, blank=True)
 
     def __unicode__(self):
