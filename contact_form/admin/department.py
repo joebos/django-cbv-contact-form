@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 
-from contactform.models import *
+from contact_form.models import *
 
 
 class DepartmentAdmin(admin.ModelAdmin):

@@ -11,7 +11,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'braces',
     'captcha',
-    'contactform'
+    'contact_form'
 )
 
 DATABASES = {

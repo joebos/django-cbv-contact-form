@@ -4,8 +4,8 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext as _
 
-from contactform.models.subject import Subject
-from contactform.conf import settings
+from contact_form.models.subject import Subject
+from contact_form.conf import settings
 
 
 class Message(models.Model):
@@ -24,6 +24,6 @@ class Message(models.Model):
         return u'{0:>n}'.format(self.pk)
 
     class Meta:
-        app_label = 'contactform'
+        app_label = 'contact_form'
         verbose_name = _('Message')
         verbose_name_plural = _('Messages')

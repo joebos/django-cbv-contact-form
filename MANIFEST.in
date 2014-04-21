@@ -1,5 +1,5 @@
 include LICENSE
 include README.rst
-recursive-include contactform/static *
-recursive-include contactform/templates *
+recursive-include contact_form/static *
+recursive-include contact_form/templates *
 recursive-include docs *

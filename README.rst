@@ -27,7 +27,7 @@ You can install the latest stable package running this command::
 
 Also you can install the development version running this command::
 
-    $ pip install -e git+http://github.com/dlancer/django-cbv-contact-form.git#egg=contactform-dev
+    $ pip install -e git+http://github.com/dlancer/django-cbv-contact-form.git#egg=contact_form-dev
 
 Setuptools
 ----------
@@ -46,7 +46,7 @@ You must add these apps to your list of ``INSTALLED_APPS`` in ``settings.py``::
         'captcha',
         'braces',
         'crispy_forms',
-        'contactform',
+        'contact_form',
     )
 
 Include the contact form URLconf in your project urls.py like this::
@@ -55,7 +55,7 @@ Include the contact form URLconf in your project urls.py like this::
     '',
         ...
         url(r'^captcha/', include('captcha.urls')),
-        url(r'^contactform/', include('contactform.urls')),
+        url(r'^contact_form/', include('contact_form.urls')),
     )
 
 Run ``python manage.py syncdb``.  This creates the appropriate tables in your database
@@ -107,7 +107,7 @@ Usage
 Start the development server and visit http://127.0.0.1:8000/admin/ to setup contact
 form settings (you'll need the Admin app enabled).
 
-Visit http://127.0.0.1:8000/contactform/ to use contact form.
+Visit http://127.0.0.1:8000/contact_form/ to use contact form.
 
 
 You may find detailed documentation is in the "docs" directory.

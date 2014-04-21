@@ -3,11 +3,11 @@ from django.contrib.auth.models import User
 from django.test import TestCase
 from django.test.client import Client, RequestFactory
 
-from contactform.models import Message, Department, Subject
+from contact_form.models import Message, Department, Subject
 
 
 class ContactFormCase(TestCase):
-    urls = 'contactform.tests.urls'
+    urls = 'contact_form.tests.urls'
 
     def setUp(self):
         self.factory = RequestFactory()

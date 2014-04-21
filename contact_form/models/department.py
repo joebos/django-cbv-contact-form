@@ -3,7 +3,7 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 
-from contactform.conf import settings
+from contact_form.conf import settings
 
 
 class Department(models.Model):
@@ -19,7 +19,7 @@ class Department(models.Model):
         return u'/department/{0:>s}'.format(self.id)
 
     class Meta:
-        app_label = 'contactform'
+        app_label = 'contact_form'
         verbose_name = _('Department')
         verbose_name_plural = _('Departments')
 

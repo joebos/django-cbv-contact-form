@@ -3,7 +3,7 @@
 from django.contrib import admin
 from django.utils.translation import ugettext as _
 
-from contactform.models import *
+from contact_form.models import *
 
 
 class MessageAdmin(admin.ModelAdmin):

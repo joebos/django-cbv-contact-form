@@ -14,8 +14,8 @@ try:
 except ImportError:
     raise 'django-cbv-contact-form application required django-crispy-forms package'
 
-from contactform.conf import settings
-from contactform.models import Message, Subject
+from contact_form.conf import settings
+from contact_form.models import Message, Subject
 
 
 class ContactForm(forms.ModelForm):
@@ -35,10 +35,14 @@ class ContactForm(forms.ModelForm):
                                     error_messages={'required': _('Please enter your email.')})
     message = forms.CharField(label=_('Your message'),
                               widget=forms.Textarea(attrs={'maxlength': settings.CONTACT_FORM_MAX_MESSAGE_LENGTH}),
-                              min_length=15,
-                              help_text=_('Your message (15 characters minimum)'),
+                              min_length=settings.CONTACT_FORM_MIN_MESSAGE_LENGTH,
+                              help_text=_('Your message ({0} characters minimum)').format(
+                                  settings.CONTACT_FORM_MIN_MESSAGE_LENGTH
+                              ),
                               error_messages={'required': _('Please enter your message'),
-                                              'min_length': _('Use at least 15 characters')})
+                                              'min_length': _('Use at least {0} characters').format(
+                                                  settings.CONTACT_FORM_MIN_MESSAGE_LENGTH
+                                              )})
 
     def __init__(self, *args, **kwargs):
         """Form initialization method
@@ -61,7 +65,7 @@ class ContactForm(forms.ModelForm):
             )
         )
         self.helper.add_layout(layout)
-        self.helper.form_id = 'contactform'
+        self.helper.form_id = 'contact_form'
         self.helper.form_action = ''
         self.helper.form_method = 'POST'
         self.helper.form_style = 'inline'
@@ -107,7 +111,7 @@ class ContactFormCaptcha(ContactForm):
             )
         )
         self.helper.add_layout(layout)
-        self.helper.form_id = 'contactform'
+        self.helper.form_id = 'contact_form'
         self.helper.form_action = ''
         self.helper.form_method = 'POST'
         self.helper.form_style = 'inline'

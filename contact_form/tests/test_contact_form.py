@@ -2,13 +2,13 @@
 from django.core.urlresolvers import reverse
 
 from .base import ContactFormCase
-from contactform.forms import ContactForm
+from contact_form.forms import ContactForm
 
 
 class TestContactForm(ContactFormCase):
 
     def test_form_view(self):
-        response = self.client.get(reverse('contactform'))
+        response = self.client.get(reverse('contact_form'))
         self.assertEqual(response.status_code, 200)
 
     def test_valid_form(self):

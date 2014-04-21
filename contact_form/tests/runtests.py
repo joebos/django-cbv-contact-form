@@ -18,7 +18,7 @@ else:
 
 def runtests():
     return TestRunner(failfast=False).run_tests(
-        ['contactform.tests.TestContactForm'], verbosity=1, interactive=True
+        ['contact_form.tests.TestContactForm'], verbosity=1, interactive=True
     )
 
 

@@ -5,14 +5,14 @@ from django.views.generic import CreateView
 
 from braces.views import FormMessagesMixin
 
-from contactform.conf import settings
-from contactform.forms import ContactForm, ContactFormCaptcha
-from contactform.signals import contact_form_valid, contact_form_invalid
+from contact_form.conf import settings
+from contact_form.forms import ContactForm, ContactFormCaptcha
+from contact_form.signals import contact_form_valid, contact_form_invalid
 
 class ContactFormView(FormMessagesMixin, CreateView):
     """Contact form view"""
 
-    template_name = 'contactform/form.html'
+    template_name = 'contact_form/form.html'
     success_url = settings.CONTACT_FORM_SUCCESS_URL
 
     form_valid_message = settings.CONTACT_FORM_VALID_MESSAGE
