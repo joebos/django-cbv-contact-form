@@ -1,14 +1,5 @@
 """Implements contact form view"""
 
-import django.dispatch
-
-contact_form_valid = django.dispatch.Signal(
-    providing_args=['event', 'sender_ip', 'sender_name', 'sender_email', 'email', 'subject', 'message']
-)
-
-contact_form_invalid = django.dispatch.Signal(
-    providing_args=['event', 'sender_ip', 'sender_name', 'sender_email']
-)
 
 from django.views.generic import CreateView
 
@@ -16,7 +7,7 @@ from braces.views import FormMessagesMixin
 
 from contactform.conf import settings
 from contactform.forms import ContactForm, ContactFormCaptcha
-
+from contactform.signals import contact_form_valid, contact_form_invalid
 
 class ContactFormView(FormMessagesMixin, CreateView):
     """Contact form view"""
