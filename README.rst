@@ -93,13 +93,17 @@ These options should be defined in your ``settings.py`` file.
 
 **Contact form models fields customization**
 
-* ``CONTACT_FORM_MAX_SENDER_NAME_LENGTH``: sender name max length
+* ``CONTACT_FORM_SENDER_NAME_MAX_LENGTH``: sender name maximum length
 
-* ``CONTACT_FORM_MAX_SUBJECT_LENGTH``: message subject max length
-* ``CONTACT_FORM_MAX_MESSAGE_LENGTH``: message text max length
+* ``CONTACT_FORM_SUBJECT_MAX_LENGTH``: message subject maximum length
 
-* ``CONTACT_FORM_MAX_DEPARTMENT_NAME_LENGTH``: department name max length
-* ``CONTACT_FORM_MAX_DEPARTMENT_PHONE_LENGTH``: department phone max length
+* ``CONTACT_FORM_MESSAGE_MAX_LENGTH``: message text maximum length
+
+* ``CONTACT_FORM_MESSAGE_MIN_LENGTH``: message text minimum length
+
+* ``CONTACT_FORM_DEPARTMENT_NAME_MAX_LENGTH``: department name maximum length
+
+* ``CONTACT_FORM_DEPARTMENT_PHONE_MAX_LENGTH``: department phone maximum length
 
 Usage
 =====
