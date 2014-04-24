@@ -8,7 +8,7 @@ from contact_form.models.department import Department
 
 
 class Subject(models.Model):
-    title = models.CharField(max_length=settings.CONTACT_FORM_MAX_SUBJECT_LENGTH)
+    title = models.CharField(max_length=settings.CONTACT_FORM_SUBJECT_MAX_LENGTH)
     department = models.ForeignKey(Department)
     description = models.TextField(blank=True)
 
