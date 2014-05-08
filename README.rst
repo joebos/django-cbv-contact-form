@@ -61,6 +61,13 @@ Include the contact form URLconf in your project urls.py like this::
 Run ``python manage.py syncdb``.  This creates the appropriate tables in your database
 that are necessary for operation.
 
+Database migration
+------------------
+
+If you use Django 1.5+ you can use database migration by add South application to your django settings.
+Django 1.7+ has native database migration support.
+
+
 Customizing contact form
 ------------------------
 
