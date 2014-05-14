@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse_lazy
 CONTACT_FORM_USE_CAPTCHA = getattr(settings, 'CONTACT_FORM_USE_CAPTCHA', False)
 CONTACT_FORM_USE_SIGNALS = getattr(settings, 'CONTACT_FORM_USE_SIGNALS', False)
 CONTACT_FORM_SUCCESS_URL = getattr(settings, 'CONTACT_FORM_SUCCESS_URL', reverse_lazy('contact_form'))
+CONTACT_FORM_USE_SITES = getattr(settings, 'CONTACT_FORM_USE_SITES', True)
 
 CONTACT_FORM_VALID_MESSAGE = getattr(
     settings,

@@ -2,12 +2,14 @@
 
 
 from django.views.generic import CreateView
+from django.conf import settings as django_settings
 
 from braces.views import FormMessagesMixin
 
 from contact_form.conf import settings
 from contact_form.forms import ContactForm, ContactFormCaptcha
 from contact_form.signals import contact_form_valid, contact_form_invalid
+
 
 class ContactFormView(FormMessagesMixin, CreateView):
     """Contact form view"""
@@ -20,6 +22,8 @@ class ContactFormView(FormMessagesMixin, CreateView):
 
     valid_event = 'CONTACT_FORM_VALID_MESSAGE'
     invalid_event = 'CONTACT_FORM_INVALID_MESSAGE'
+
+    site = None
 
     def get_form_class(self):
         if hasattr(self.request, 'user'):
@@ -43,6 +47,10 @@ class ContactFormView(FormMessagesMixin, CreateView):
                 if hasattr(user, settings.CONTACT_FORM_USER_EMAIL_FIELD):
                     sender_email = getattr(user, settings.CONTACT_FORM_USER_EMAIL_FIELD)
         initial = {'sender_name': sender_name, 'sender_email': sender_email}
+        if hasattr(django_settings, 'SITE_ID') and settings.CONTACT_FORM_USE_SITES:
+            from django.contrib.sites.models import Site
+            site = Site.objects.get(id=django_settings.SITE_ID)
+            self.site = site
         return initial
 
     def form_valid(self, form):
@@ -51,12 +59,14 @@ class ContactFormView(FormMessagesMixin, CreateView):
         if hasattr(self.request, 'user'):
             instance.user = self.request.user
         instance.ip = self.request.META['REMOTE_ADDR']
+        instance.site = self.site
         instance.save()
         if settings.CONTACT_FORM_USE_SIGNALS:
             contact_form_valid.send(
                 sender=self,
                 event=self.valid_event,
                 ip=instance.ip,
+                site=self.site,
                 sender_name=instance.sender_name,
                 sender_email=instance.sender_email,
                 email=instance.subject.department.email,
@@ -74,6 +84,7 @@ class ContactFormView(FormMessagesMixin, CreateView):
                 sender=self,
                 event=self.invalid_event,
                 ip=ip,
+                site=self.site,
                 sender_name=form['sender_name'],
                 sender_email=form['sender_email']
             )

@@ -3,6 +3,7 @@
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext as _
+from django.contrib.sites.models import Site
 
 from contact_form.models.subject import Subject
 from contact_form.conf import settings
@@ -19,6 +20,7 @@ class Message(models.Model):
     message = models.TextField(verbose_name=_('Message'), max_length=settings.CONTACT_FORM_MESSAGE_MAX_LENGTH)
     ip = models.IPAddressField(_('IP'), null=True, blank=True)
     date_created = models.DateTimeField(_('Created'), default=timezone.now)
+    site = models.ForeignKey(Site, null=True, blank=True)
 
     def __unicode__(self):
         return u'{0:>n}'.format(self.pk)

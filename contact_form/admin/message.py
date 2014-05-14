@@ -2,14 +2,22 @@
 
 from django.contrib import admin
 from django.utils.translation import ugettext as _
+from django.conf import settings as django_settings
 
 from contact_form.models import *
+from contact_form.conf import settings
 
 
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ('subject', 'sender', 'ip', 'date_created_short')
-    list_filter = ('date_created', 'subject')
-    search_fields = ('sender_name', 'ip', 'date_created')
+    if hasattr(django_settings, 'SITE_ID') and settings.CONTACT_FORM_USE_SITES:
+        list_display = ('subject', 'sender', 'ip', 'site', 'date_created_short')
+        list_filter = ('date_created', 'subject')
+        search_fields = ('sender_name', 'ip', 'site', 'date_created')
+    else:
+        list_display = ('subject', 'sender', 'ip', 'date_created_short')
+        list_filter = ('date_created', 'subject')
+        search_fields = ('sender_name', 'ip', 'date_created')
+        exclude = ('site', )
 
     def sender(self, obj):
         return u'<a href="mailto:{0:>s}">{1:>s}</a>'.format(obj.sender_email, obj.sender_name)

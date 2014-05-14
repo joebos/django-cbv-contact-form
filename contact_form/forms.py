@@ -2,6 +2,7 @@
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings as django_settings
 
 try:
     from captcha.fields import CaptchaField
@@ -21,13 +22,19 @@ from contact_form.models import Message, Subject
 class ContactForm(forms.ModelForm):
     """ContactForm form"""
 
-    subject = forms.ModelChoiceField(queryset=Subject.objects.all(),
+    if hasattr(django_settings, 'SITE_ID') and settings.CONTACT_FORM_USE_SITES:
+        queryset = Subject.objects.filter(site__id=django_settings.SITE_ID)
+    else:
+        queryset = Subject.objects.all()
+    subject = forms.ModelChoiceField(queryset=queryset,
                                      widget=forms.Select(),
                                      label=_('Message subject'),
                                      empty_label=_('Please select subject'),
                                      error_messages={'required': _('Please select subject')})
     sender_name = forms.CharField(label=_('Your name'),
-                                  widget=forms.TextInput(attrs={'maxlength': settings.CONTACT_FORM_SENDER_NAME_MAX_LENGTH}),
+                                  widget=forms.TextInput(
+                                      attrs={'maxlength': settings.CONTACT_FORM_SENDER_NAME_MAX_LENGTH}
+                                  ),
                                   error_messages={'required': _('Please enter your name')})
     # maxlength is 254 characters for compliant with RFCs 3696 and 5321
     sender_email = forms.EmailField(label=_('Your e-mail'),

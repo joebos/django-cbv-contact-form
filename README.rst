@@ -67,6 +67,16 @@ Database migration
 If you use Django 1.5+ you can use database migration by add South application to your django settings.
 Django 1.7+ has native database migration support.
 
+Multilingual support
+--------------------
+
+All messages and text strings translatable with standard Django i18n framework.
+Multilingual subjects supported with django-modeltranslation application. Default language is English.
+If you want add more languages you should use sync_translation_fields command.
+For more information see `django-modeltranslation documentation`_.
+
+.. _`django-modeltranslation documentation`: https://django-modeltranslation.readthedocs.org/en/latest/
+
 
 Customizing contact form
 ------------------------
@@ -81,6 +91,8 @@ These options should be defined in your ``settings.py`` file.
 * ``CONTACT_FORM_USE_SIGNALS``: send signals after form submitting
 
 * ``CONTACT_FORM_SUCCESS_URL``: url for redirection after successful form submission
+
+* ``CONTACT_FORM_USE_SITES``: use Django Sites framework
 
 **Contact form submission message customization**
 

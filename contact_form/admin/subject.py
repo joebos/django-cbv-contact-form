@@ -2,13 +2,28 @@
 
 from django.contrib import admin
 from django.core import urlresolvers
+from django.conf import settings as django_settings
 from django.utils.translation import ugettext as _
 
 from contact_form.models import *
+from contact_form.conf import settings
+
+try:
+    from modeltranslation.admin import TranslationAdmin
+
+    class SubjectBaseAdmin(TranslationAdmin):
+        pass
+except ImportError:
+    class SubjectBaseAdmin(admin.ModelAdmin):
+        pass
 
 
-class SubjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'department_url')
+class SubjectAdmin(SubjectBaseAdmin):
+    if hasattr(django_settings, 'SITE_ID') and settings.CONTACT_FORM_USE_SITES:
+        list_display = ('title', 'department_url', 'site')
+    else:
+        list_display = ('title', 'department_url')
+        exclude = ('site', )
 
     def department_url(self, obj):
         change_url = urlresolvers.reverse('admin:contact_form_department_change', args=(obj.department.id,))
