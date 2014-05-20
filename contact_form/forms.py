@@ -88,14 +88,14 @@ class ContactForm(forms.ModelForm):
         data = self.cleaned_data['sender_name']
         if settings.CONTACT_FORM_FILTER_SENDER_NAME:
             if len(data) != len(bleach.clean(data, tags=[], strip=True)):
-                raise forms.ValidationError(_('Not allowed characters in your name.'))
+                raise forms.ValidationError(_('Not allowed characters in your name'))
         return data
 
     def clean_message(self):
         data = self.cleaned_data['message']
         if settings.CONTACT_FORM_FILTER_MESSAGE:
             if len(data) != len(bleach.clean(data, tags=settings.CONTACT_FORM_ALLOWED_MESSAGE_TAGS, strip=True)):
-                raise forms.ValidationError(_('Not allowed characters in your message.'))
+                raise forms.ValidationError(_('Not allowed characters in your message'))
         return data
 
     class Meta:
