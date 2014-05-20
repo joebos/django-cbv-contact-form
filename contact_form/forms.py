@@ -5,6 +5,11 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings as django_settings
 
 try:
+    import bleach
+except ImportError:
+    raise 'django-cbv-contact-form application required bleach package'
+
+try:
     from captcha.fields import CaptchaField
 except ImportError:
     raise 'django-cbv-contact-form application required django-simple-captcha package'
@@ -78,6 +83,20 @@ class ContactForm(forms.ModelForm):
         self.helper.form_style = 'inline'
 
         super(ContactForm, self).__init__(*args, **kwargs)
+
+    def clean_sender_name(self):
+        data = self.cleaned_data['sender_name']
+        if settings.CONTACT_FORM_FILTER_SENDER_NAME:
+            if len(data) != len(bleach.clean(data, tags=[], strip=True)):
+                raise forms.ValidationError(_('Not allowed characters in your name.'))
+        return data
+
+    def clean_message(self):
+        data = self.cleaned_data['message']
+        if settings.CONTACT_FORM_FILTER_MESSAGE:
+            if len(data) != len(bleach.clean(data, tags=settings.CONTACT_FORM_ALLOWED_MESSAGE_TAGS, strip=True)):
+                raise forms.ValidationError(_('Not allowed characters in your message.'))
+        return data
 
     class Meta:
         model = Message

@@ -17,7 +17,8 @@ setup(
         'Django>=1.5',
         'django-simple-captcha>=0.4.2',
         'django-braces>=1.4.0',
-        'django-crispy-forms>=1.4.0'
+        'django-crispy-forms>=1.4.0',
+        'bleach>=1.4'
     ],
     license='MIT',
     description='Class based view contact form with captcha support for Django 1.5+',

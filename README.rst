@@ -12,6 +12,7 @@ Requirements
     django-simple-captcha >= 0.4.2
     django-braces >= 1.4.0
     django-crispy-forms >= 1.4.0
+    bleach >= 1.4
 
 Installation
 ============
@@ -93,6 +94,12 @@ These options should be defined in your ``settings.py`` file.
 * ``CONTACT_FORM_SUCCESS_URL``: url for redirection after successful form submission
 
 * ``CONTACT_FORM_USE_SITES``: use Django Sites framework
+
+* ``CONTACT_FORM_FILTER_SENDER_NAME``: filter sender name field
+
+* ``CONTACT_FORM_FILTER_MESSAGE``: filter message field
+
+* ``CONTACT_FORM_ALLOWED_MESSAGE_TAGS``: allowed html tags for message field
 
 **Contact form submission message customization**
 
