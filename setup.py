@@ -18,7 +18,8 @@ setup(
         'django-simple-captcha>=0.4.2',
         'django-braces>=1.4.0',
         'django-crispy-forms>=1.4.0',
-        'bleach>=1.4'
+        'bleach>=1.4',
+        'six>=1.6.1'
     ],
     license='MIT',
     description='Class based view contact form with captcha support for Django 1.5+',
@@ -29,7 +30,6 @@ setup(
     maintainer='dlancer',
     maintainer_email='dmdpost@gmail.com',
     zip_safe=False,
-    use_2to3=True,
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',

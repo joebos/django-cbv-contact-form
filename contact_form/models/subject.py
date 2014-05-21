@@ -19,6 +19,6 @@ class Subject(models.Model):
 
     class Meta:
         app_label = 'contact_form'
-        verbose_name = _('Subject')
-        verbose_name_plural = _('Subjects')
+        verbose_name = _(u'Subject')
+        verbose_name_plural = _(u'Subjects')
 

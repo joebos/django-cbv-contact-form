@@ -13,10 +13,10 @@ class TestContactForm(ContactFormCase):
 
     def test_valid_form(self):
         data = dict(
-            sender_name='test',
-            sender_email='test@test.com',
+            sender_name=u'test',
+            sender_email=u'test@test.com',
             subject=self.subject_foo.id,
-            message='test message from user foo',
+            message=u'test message from user foo',
             captcha='',
         )
         form = ContactForm(data=data)
@@ -24,8 +24,8 @@ class TestContactForm(ContactFormCase):
 
     def test_invalid_form(self):
         data = dict(
-            sender_name='test',
-            sender_email='test@test.com',
+            sender_name=u'test',
+            sender_email=u'test@test.com',
             subject='',
             message=''
         )

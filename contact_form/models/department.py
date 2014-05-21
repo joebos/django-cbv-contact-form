@@ -22,6 +22,6 @@ class Department(models.Model):
 
     class Meta:
         app_label = 'contact_form'
-        verbose_name = _('Department')
-        verbose_name_plural = _('Departments')
+        verbose_name = _(u'Department')
+        verbose_name_plural = _(u'Departments')
 

@@ -13,6 +13,7 @@ Requirements
     django-braces >= 1.4.0
     django-crispy-forms >= 1.4.0
     bleach >= 1.4
+    six >= 1.6.1
 
 Installation
 ============
@@ -74,7 +75,7 @@ Multilingual support
 All messages and text strings translatable with standard Django i18n framework.
 Multilingual subjects supported with django-modeltranslation application. Default language is English.
 If you want add more languages you should use sync_translation_fields command.
-For more information see `django-modeltranslation documentation`_.
+You may find more information in `django-modeltranslation documentation`_.
 
 .. _`django-modeltranslation documentation`: https://django-modeltranslation.readthedocs.org/en/latest/
 
@@ -100,6 +101,8 @@ These options should be defined in your ``settings.py`` file.
 * ``CONTACT_FORM_FILTER_MESSAGE``: filter message field
 
 * ``CONTACT_FORM_ALLOWED_MESSAGE_TAGS``: allowed html tags for message field
+
+* ``CONTACT_FORM_STRIP_MESSAGE``: strip message not allowed tags
 
 **Contact form submission message customization**
 

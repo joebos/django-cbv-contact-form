@@ -1,10 +1,17 @@
 """Implements contact form view"""
 
-
 from django.views.generic import CreateView
 from django.conf import settings as django_settings
 
-from braces.views import FormMessagesMixin
+try:
+    import bleach
+except ImportError:
+    raise u'django-cbv-contact-form application required bleach package'
+
+try:
+    from braces.views import FormMessagesMixin
+except ImportError:
+    raise u'django-cbv-contact-form application required django-braces package'
 
 from contact_form.conf import settings
 from contact_form.forms import ContactForm, ContactFormCaptcha
@@ -58,6 +65,12 @@ class ContactFormView(FormMessagesMixin, CreateView):
         instance = form.save(commit=False)
         if hasattr(self.request, 'user'):
             instance.user = self.request.user
+        if settings.CONTACT_FORM_FILTER_MESSAGE:
+            instance.message = bleach.clean(
+                instance.message,
+                tags=settings.CONTACT_FORM_ALLOWED_MESSAGE_TAGS,
+                strip=settings.CONTACT_FORM_STRIP_MESSAGE
+            )
         instance.ip = self.request.META['REMOTE_ADDR']
         instance.site = self.site
         instance.save()
