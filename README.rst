@@ -102,7 +102,7 @@ These options should be defined in your ``settings.py`` file.
 
 * ``CONTACT_FORM_ALLOWED_MESSAGE_TAGS``: allowed html tags for message field
 
-* ``CONTACT_FORM_STRIP_MESSAGE``: strip message not allowed tags
+* ``CONTACT_FORM_STRIP_MESSAGE``: strip not allowed tags from message
 
 **Contact form submission message customization**
 

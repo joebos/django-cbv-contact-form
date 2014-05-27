@@ -1,5 +1,7 @@
 """Implements contact form admin interface"""
 
+from __future__ import unicode_literals
+
 from django.contrib import admin
 from django.core import urlresolvers
 from django.conf import settings as django_settings
@@ -27,7 +29,7 @@ class SubjectAdmin(SubjectBaseAdmin):
 
     def department_url(self, obj):
         change_url = urlresolvers.reverse('admin:contact_form_department_change', args=(obj.department.id,))
-        return u'<a href="{0:>s}">{1:>s}</a>'.format(change_url, obj.department.name)
+        return '<a href="{0:>s}">{1:>s}</a>'.format(change_url, obj.department.name)
     department_url.allow_tags = True
     department_url.short_description = _('Department')
 

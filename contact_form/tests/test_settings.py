@@ -1,5 +1,7 @@
 import os
 
+SITE_ID = 1
+
 BASE_DIR = os.path.dirname(__file__)
 
 INSTALLED_APPS = (
@@ -8,6 +10,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.admin',
     'django.contrib.messages',
+    'django.contrib.sites',
     'crispy_forms',
     'braces',
     'captcha',

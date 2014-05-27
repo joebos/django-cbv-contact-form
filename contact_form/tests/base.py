@@ -1,7 +1,9 @@
+from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.test.client import Client, RequestFactory
+from django.contrib.sites.models import Site
 
 from contact_form.models import Message, Department, Subject
 
@@ -12,15 +14,24 @@ class ContactFormCase(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
         self.client = Client()
-        self.user_foo = User.objects.create(username=u'foo', password=u'bar', email=u'foo@test.com')
-        self.department_foo = Department.objects.create(name=u'foo department', email=u'department@test.com')
-        self.subject_foo = Subject.objects.create(title=u'test subject title', department=self.department_foo)
+        self.site_foo = Site.objects.get(id=1)
+        self.user_foo = User.objects.create(username='foo', password='bar', email='foo@test.com')
+        self.department_foo = Department.objects.create(
+            name='foo department',
+            email='department@test.com',
+            site=self.site_foo
+        )
+        self.subject_foo = Subject.objects.create(
+            title='test subject title',
+            department=self.department_foo,
+            site=self.site_foo
+        )
         self.message_foo = Message.objects.create(
-            sender_name=u'foo',
-            sender_email=u'foo@test.com',
+            sender_name='foo',
+            sender_email='foo@test.com',
             subject=self.subject_foo,
-            message=u'test message text',
-            ip=u'127.0.0.1')
+            message='test message text',
+            ip='127.0.0.1')
 
     def tearDown(self):
         self.user_foo.delete()

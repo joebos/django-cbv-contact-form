@@ -1,17 +1,19 @@
 """Implements contact form view"""
 
+from __future__ import unicode_literals
+
 from django.views.generic import CreateView
 from django.conf import settings as django_settings
 
 try:
     import bleach
 except ImportError:
-    raise u'django-cbv-contact-form application required bleach package'
+    raise 'django-cbv-contact-form application required bleach package'
 
 try:
     from braces.views import FormMessagesMixin
 except ImportError:
-    raise u'django-cbv-contact-form application required django-braces package'
+    raise 'django-cbv-contact-form application required django-braces package'
 
 from contact_form.conf import settings
 from contact_form.forms import ContactForm, ContactFormCaptcha
