@@ -11,6 +11,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from contact_form.models.subject import Subject
 from contact_form.conf import settings
 
+
 @python_2_unicode_compatible
 class Message(models.Model):
     sender_name = models.CharField(

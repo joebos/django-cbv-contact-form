@@ -9,6 +9,7 @@ from django.utils.encoding import python_2_unicode_compatible
 
 from contact_form.conf import settings
 
+
 @python_2_unicode_compatible
 class Department(models.Model):
     name = models.CharField(max_length=settings.CONTACT_FORM_DEPARTMENT_NAME_MAX_LENGTH)
@@ -27,4 +28,3 @@ class Department(models.Model):
         app_label = 'contact_form'
         verbose_name = _('Department')
         verbose_name_plural = _('Departments')
-
