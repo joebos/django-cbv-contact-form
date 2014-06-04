@@ -38,4 +38,3 @@ class ContactFormCase(TestCase):
         self.message_foo.delete()
         self.subject_foo.delete()
         self.department_foo.delete()
-

@@ -8,4 +8,3 @@ urlpatterns = patterns(
     # contact_form
     (r'^contact_form/', include('contact_form.urls')),
 )
-
