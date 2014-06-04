@@ -13,3 +13,8 @@ __version__ = get_version()
 __maintainer__ = 'dlancer'
 __email__ = 'dmdpost@gmail.com'
 __status__ = 'Development'
+
+# default the contact_form app config (only for Django v1.7+)
+default_app_config = 'contact_form.apps.AppConfig'
+
+
