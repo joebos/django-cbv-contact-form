@@ -1,8 +1,12 @@
 import os
 from setuptools import setup, find_packages
 from contact_form import get_version as get_package_version
+from pip.req import parse_requirements
 
 README = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
+REQUIREMENTS = os.path.join(os.path.dirname(__file__), 'requirements.txt')
+install_reqs = parse_requirements(REQUIREMENTS)
+reqs = [str(ir.req) for ir in install_reqs]
 
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
@@ -12,16 +16,7 @@ setup(
     version=get_package_version(),
     packages=find_packages(),
     include_package_data=True,
-    install_requires=[
-        'docutils>=0.3',
-        'Django>=1.5',
-        'django-simple-captcha>=0.4.2',
-        'django-braces>=1.4.0',
-        'django-crispy-forms>=1.4.0',
-        'django-ipware>=0.0.8',
-        'bleach>=1.4',
-        'six>=1.6.1'
-    ],
+    install_requires=reqs,
     license='BSD',
     description='Class based view contact form with captcha support for Django 1.5+',
     long_description=README,
