@@ -15,9 +15,28 @@ try:
 except ImportError:
     raise 'django-cbv-contact-form application required django-braces package'
 
+try:
+    from ipware.ip import get_ip, get_real_ip
+except ImportError:
+    raise 'django-cbv-contact-form application required django-ipware package'
+
 from contact_form.conf import settings
 from contact_form.forms import ContactForm, ContactFormCaptcha
 from contact_form.signals import contact_form_valid, contact_form_invalid
+
+
+def get_user_ip(request):
+    """Return user ip
+
+    :param request: Django request object
+    :return: user ip
+    """
+    ip = get_real_ip(request)
+    if ip is None:
+        ip = get_ip(request)
+        if ip is None:
+            ip = '127.0.0.1'
+    return ip
 
 
 class ContactFormView(FormMessagesMixin, CreateView):
@@ -73,7 +92,7 @@ class ContactFormView(FormMessagesMixin, CreateView):
                 tags=settings.CONTACT_FORM_ALLOWED_MESSAGE_TAGS,
                 strip=settings.CONTACT_FORM_STRIP_MESSAGE
             )
-        instance.ip = self.request.META['REMOTE_ADDR']
+        instance.ip = get_user_ip(self.request)
         instance.site = self.site
         instance.save()
         if settings.CONTACT_FORM_USE_SIGNALS:
@@ -93,7 +112,7 @@ class ContactFormView(FormMessagesMixin, CreateView):
 
     def form_invalid(self, form):
         """This is what's called when the form is invalid."""
-        ip = self.request.META['REMOTE_ADDR']
+        ip = get_user_ip(self.request)
         if settings.CONTACT_FORM_USE_SIGNALS:
             contact_form_invalid.send(
                 sender=self,

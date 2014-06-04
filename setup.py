@@ -18,10 +18,11 @@ setup(
         'django-simple-captcha>=0.4.2',
         'django-braces>=1.4.0',
         'django-crispy-forms>=1.4.0',
+        'django-ipware>=0.0.8',
         'bleach>=1.4',
         'six>=1.6.1'
     ],
-    license='MIT',
+    license='BSD',
     description='Class based view contact form with captcha support for Django 1.5+',
     long_description=README,
     url='https://github.com/dlancer/django-cbv-contact-form',
