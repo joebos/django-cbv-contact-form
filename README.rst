@@ -12,6 +12,7 @@ Requirements
     django-simple-captcha >= 0.4.2
     django-braces >= 1.4.0
     django-crispy-forms >= 1.4.0
+    django-ipware >= 0.0.8
     bleach >= 1.4
     six >= 1.6.1
 
