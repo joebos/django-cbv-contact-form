@@ -15,28 +15,11 @@ try:
 except ImportError:
     raise 'django-cbv-contact-form application required django-braces package'
 
-try:
-    from ipware.ip import get_ip, get_real_ip
-except ImportError:
-    raise 'django-cbv-contact-form application required django-ipware package'
 
 from contact_form.conf import settings
 from contact_form.forms import ContactForm, ContactFormCaptcha
 from contact_form.signals import contact_form_valid, contact_form_invalid
-
-
-def get_user_ip(request):
-    """Return user ip
-
-    :param request: Django request object
-    :return: user ip
-    """
-    ip = get_real_ip(request)
-    if ip is None:
-        ip = get_ip(request)
-        if ip is None:
-            ip = '127.0.0.1'
-    return ip
+from contact_form.helpers import get_user_ip
 
 
 class ContactFormView(FormMessagesMixin, CreateView):
