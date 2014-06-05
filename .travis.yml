@@ -26,4 +26,4 @@ matrix:
    - python: "2.6"
      env: DJANGO="https://www.djangoproject.com/download/1.7.b4/tarball/"
 
-script: python runtests
+script: python ./runtests.py
