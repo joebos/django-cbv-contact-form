@@ -12,8 +12,7 @@ env:
   - DJANGO="django==1.5.8"
 
 install:
-  #- pip install $DJANGO
-  #- pip install -r requirements.txt
+  - pip install $DJANGO
   - pip install -e .
   - pip install flake8
 
