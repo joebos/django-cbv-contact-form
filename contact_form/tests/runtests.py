@@ -16,11 +16,9 @@ if django.VERSION < (1, 6):
 else:
     from django.test.runner import DiscoverRunner as TestRunner
 
-from django.conf import settings
-
 
 def runtests():
-    test_runner = TestRunner(settings, failfast=False, verbosity=1, interactive=True)
+    test_runner = TestRunner(verbosity=1, interactive=True, failfast=False)
     failures = test_runner.run_tests(['contact_form.tests.TestContactForm'])
     return bool(failures)
 
