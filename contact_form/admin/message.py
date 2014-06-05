@@ -22,7 +22,7 @@ class MessageAdmin(admin.ModelAdmin):
         exclude = ('site', )
 
     def sender(self, obj):
-        return u'<a href="mailto:{0:>s}">{1:>s}</a>'.format(obj.sender_email, obj.sender_name)
+        return '<a href="mailto:{0:>s}">{1:>s}</a>'.format(obj.sender_email, obj.sender_name)
     sender.allow_tags = True
     sender.short_description = _('Sender')
 

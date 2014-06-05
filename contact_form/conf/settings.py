@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse_lazy
@@ -14,13 +15,13 @@ CONTACT_FORM_STRIP_MESSAGE = getattr(settings, 'CONTACT_FORM_STRIP_MESSAGE', Fal
 CONTACT_FORM_VALID_MESSAGE = getattr(
     settings,
     'CONTACT_FORM_VALID_MESSAGE',
-    _(u'Your message is submitted.')
+    _('Your message is submitted.')
 )
 
 CONTACT_FORM_INVALID_MESSAGE = getattr(
     settings,
     'CONTACT_FORM_INVALID_MESSAGE',
-    _(u'Something went wrong, your message was not submitted!')
+    _('Something went wrong, your message was not submitted!')
 )
 
 CONTACT_FORM_USE_USERNAME = getattr(settings, 'CONTACT_FORM_USE_USERNAME', True)
