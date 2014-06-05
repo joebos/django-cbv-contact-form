@@ -8,12 +8,20 @@ Django class based contact form
     :alt: Build status
 
 .. image:: https://pypip.in/v/django-cbv-contact-form/badge.png
-    :target: https://crate.io/packages/django-cbv-contact-form/
+    :target: https://pypi.python.org/pypi/django-cbv-contact-form/
     :alt: Latest PyPI version
 
 .. image:: https://pypip.in/d/django-cbv-contact-form/badge.png
-    :target: https://crate.io/packages/django-cbv-contact-form/
+    :target: https://pypi.python.org/pypi/django-cbv-contact-form/
     :alt: Number of PyPI downloads
+
+.. image:: https://pypip.in/format/django-cbv-contact-form/badge.png
+    :target: https://pypi.python.org/pypi/django-cbv-contact-form/
+    :alt: Download format
+
+.. image:: https://pypip.in/license/django-cbv-contact-form/badge.png
+    :target: https://pypi.python.org/pypi/django-cbv-contact-form/
+    :alt: License
 
 Requirements
 ------------
