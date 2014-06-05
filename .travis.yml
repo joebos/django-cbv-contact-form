@@ -15,12 +15,10 @@ install:
   - pip install $DJANGO
   - pip install -r requirements.txt
   - pip install -e .
-  - pip install pep8
-  - pip install pyflakes
+  - pip install flake8
 
 before_script:
-  - "pep8 --exclude=migrations --ignore=E501,E225,E128,E126 ."
-  - pyflakes -x W contact_form
+  - flake8 --exclude=migrations --ignore=E501,E225,E128,E126,F401,F403 contact_form
 
 matrix:
   exclude:
