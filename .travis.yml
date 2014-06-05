@@ -19,10 +19,11 @@ install:
 
 before_script:
   - flake8 --exclude=migrations --ignore=E501,E225,E128,E126,F401,F403 contact_form
+  - cd contact_form/tests
 
 matrix:
   exclude:
    - python: "2.6"
      env: DJANGO="https://www.djangoproject.com/download/1.7.b4/tarball/"
 
-script: python manage.py test
+script: python runtests
