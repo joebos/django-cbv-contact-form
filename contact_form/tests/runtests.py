@@ -7,13 +7,20 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'test_settings'
 test_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, test_dir)
 
-from django.test.utils import get_runner
+import django
+if django.VERSION >= (1, 7):
+    django.setup()
+
+if django.VERSION < (1, 6):
+    from django.test.simple import DjangoTestSuiteRunner as TestRunner
+else:
+    from django.test.runner import DiscoverRunner as TestRunner
+
 from django.conf import settings
 
 
 def runtests():
-    TestRunner = get_runner(settings)
-    test_runner = TestRunner(verbosity=1, interactive=True)
+    test_runner = TestRunner(settings, failfast=False, verbosity=1, interactive=True)
     failures = test_runner.run_tests(['contact_form.tests.TestContactForm'])
     return bool(failures)
 
