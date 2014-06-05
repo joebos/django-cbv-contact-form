@@ -3,10 +3,9 @@ Django class based contact form
 
 ``django-cbv-contact-form`` is a class based view contact form with captcha support for Django 1.5+
 
-.. image:: https://api.travis-ci.org/dlancer/django-cbv-contact-form/django-cbv-contact-form.png?branch=master
+.. image:: https://travis-ci.org/dlancer/django-cbv-contact-form.png?branch=master
    :target: https://travis-ci.org/dlancer/django-cbv-contact-form/
    :alt: Build status
-
 
 Requirements
 ------------
