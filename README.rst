@@ -7,11 +7,11 @@ Django class based contact form
     :target: https://travis-ci.org/dlancer/django-cbv-contact-form/
     :alt: Build status
 
-.. image:: https://pypip.in/v/django-cbv-contact-form/badge.svg
+.. image:: https://pypip.in/version/django-cbv-contact-form/badge.svg
     :target: https://pypi.python.org/pypi/django-cbv-contact-form/
     :alt: Latest PyPI version
 
-.. image:: https://pypip.in/d/django-cbv-contact-form/badge.svg
+.. image:: https://pypip.in/download/django-cbv-contact-form/badge.svg
     :target: https://pypi.python.org/pypi/django-cbv-contact-form/
     :alt: Number of PyPI downloads
 
