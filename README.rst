@@ -3,23 +3,23 @@ Django class based contact form
 
 ``django-cbv-contact-form`` is a class based view contact form with captcha support for Django 1.5+
 
-.. image:: https://travis-ci.org/dlancer/django-cbv-contact-form.png?branch=master
+.. image:: https://travis-ci.org/dlancer/django-cbv-contact-form.svg?branch=master
     :target: https://travis-ci.org/dlancer/django-cbv-contact-form/
     :alt: Build status
 
-.. image:: https://pypip.in/v/django-cbv-contact-form/badge.png
+.. image:: https://pypip.in/v/django-cbv-contact-form/badge.svg
     :target: https://pypi.python.org/pypi/django-cbv-contact-form/
     :alt: Latest PyPI version
 
-.. image:: https://pypip.in/d/django-cbv-contact-form/badge.png
+.. image:: https://pypip.in/d/django-cbv-contact-form/badge.svg
     :target: https://pypi.python.org/pypi/django-cbv-contact-form/
     :alt: Number of PyPI downloads
 
-.. image:: https://pypip.in/format/django-cbv-contact-form/badge.png
+.. image:: https://pypip.in/format/django-cbv-contact-form/badge.svg
     :target: https://pypi.python.org/pypi/django-cbv-contact-form/
     :alt: Download format
 
-.. image:: https://pypip.in/license/django-cbv-contact-form/badge.png
+.. image:: https://pypip.in/license/django-cbv-contact-form/badge.svg
     :target: https://pypi.python.org/pypi/django-cbv-contact-form/
     :alt: License
 
