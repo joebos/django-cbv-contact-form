@@ -12,12 +12,18 @@ from contact_form.conf import settings
 
 class MessageAdmin(admin.ModelAdmin):
     if hasattr(django_settings, 'SITE_ID') and settings.CONTACT_FORM_USE_SITES:
-        list_display = ('subject', 'sender', 'ip', 'site', 'date_created_short')
-        list_filter = ('date_created', 'subject')
+        #list_display = ('subject', 'sender', 'ip', 'site', 'date_created_short')
+        list_display = ('sender', 'ip', 'site', 'date_created_short')
+        #list_filter = ('date_created', 'subject')
+        list_filter = ('date_created',)
         search_fields = ('sender_name', 'ip', 'site', 'date_created')
     else:
-        list_display = ('subject', 'sender', 'ip', 'date_created_short')
-        list_filter = ('date_created', 'subject')
+        #list_display = ('subject', 'sender', 'ip', 'date_created_short')
+        #list_filter = ('date_created', 'subject')
+        list_display = ('sender', 'ip', 'site', 'date_created_short')
+        list_filter = ('date_created',)
+
+
         search_fields = ('sender_name', 'ip', 'date_created')
         exclude = ('site', )
 

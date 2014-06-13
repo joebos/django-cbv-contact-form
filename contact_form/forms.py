@@ -34,11 +34,13 @@ class ContactForm(forms.ModelForm):
         queryset = Subject.objects.filter(site__id=django_settings.SITE_ID)
     else:
         queryset = Subject.objects.all()
+    '''
     subject = forms.ModelChoiceField(queryset=queryset,
                                      widget=forms.Select(),
                                      label=_('Message subject'),
                                      empty_label=_('Please select subject'),
                                      error_messages={'required': _('Please select subject')})
+    '''
     sender_name = forms.CharField(label=_('Your name'),
                                   widget=forms.TextInput(
                                       attrs={'maxlength': settings.CONTACT_FORM_SENDER_NAME_MAX_LENGTH}
@@ -69,7 +71,7 @@ class ContactForm(forms.ModelForm):
         layout = Layout(
             Fieldset(
                 _('Contact form'),
-                'subject',
+                #'subject',
                 'sender_name',
                 'sender_email',
                 'message',
@@ -97,7 +99,7 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = Message
         fields = (
-            'subject',
+            #'subject',
             'sender_name',
             'sender_email',
             'message',
@@ -121,7 +123,7 @@ class ContactFormCaptcha(ContactForm):
         layout = Layout(
             Fieldset(
                 _('Contact form'),
-                'subject',
+                #'subject',
                 'sender_name',
                 'sender_email',
                 'message',

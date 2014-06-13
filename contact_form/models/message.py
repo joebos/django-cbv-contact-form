@@ -20,7 +20,7 @@ class Message(models.Model):
     )
     # max_length overridden to 254 characters for compliant with RFCs 3696 and 5321
     sender_email = models.EmailField(verbose_name=_('Sender email'), max_length=254)
-    subject = models.ForeignKey(Subject, verbose_name=_('Subject'))
+    #subject = models.ForeignKey(Subject, verbose_name=_('Subject'))
     message = models.TextField(verbose_name=_('Message'), max_length=settings.CONTACT_FORM_MESSAGE_MAX_LENGTH)
     ip = models.IPAddressField(_('IP'), null=True, blank=True)
     date_created = models.DateTimeField(_('Created'), default=timezone.now)

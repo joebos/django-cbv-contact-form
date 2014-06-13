@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 from django.views.generic import CreateView
 from django.conf import settings as django_settings
 
+
 try:
     import bleach
 except ImportError:
@@ -90,7 +91,6 @@ class ContactFormView(FormMessagesMixin, CreateView):
                 subject=instance.subject.title,
                 message=instance.message
             )
-
         return super(ContactFormView, self).form_valid(form)
 
     def form_invalid(self, form):
@@ -107,3 +107,5 @@ class ContactFormView(FormMessagesMixin, CreateView):
             )
 
         return super(ContactFormView, self).form_invalid(form)
+
+
