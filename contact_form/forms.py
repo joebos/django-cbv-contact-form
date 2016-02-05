@@ -53,7 +53,7 @@ class ContactForm(forms.ModelForm):
     message = forms.CharField(label=_('Your message'),
                               widget=forms.Textarea(attrs={'maxlength': settings.CONTACT_FORM_MESSAGE_MAX_LENGTH}),
                               min_length=settings.CONTACT_FORM_MESSAGE_MIN_LENGTH,
-                              help_text=_('Your message ({0} characters minimum)').format(
+                              help_text=_('({0} chars minimum)').format(
                                   settings.CONTACT_FORM_MESSAGE_MIN_LENGTH
                               ),
                               error_messages={'required': _('Please enter your message'),
